@@ -18,15 +18,33 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="article">
+        <meta name="description" content="5G基站gNBgNB：gNB就是5G基站的名称。next Generation NodeB en-gNB：在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。 ng-eNB：在Option4系列的非">
+<meta property="og:type" content="article">
 <meta property="og:title" content="5G组网部署">
 <meta property="og:url" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="5G基站gNBgNB：gNB就是5G基站的名称。next Generation NodeB en-gNB：在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。 ng-eNB：在Option4系列的非">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-07-30T02:19:48.000Z">
-<meta property="article:modified_time" content="2024-07-30T02:19:48.114Z">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option5.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption2.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/public/imgs/Option1.jpg">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption3.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption3a.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5Coption3x.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption4.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption4a.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption6.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption7.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption7a.ong">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/.%5Cpublic%5Cimgs%5COption7x.png">
+<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/public/imgs/Option2~7.png">
+<meta property="article:published_time" content="2024-07-30T02:19:48.114Z">
+<meta property="article:modified_time" content="2024-07-30T02:23:51.359Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="通信">
+<meta property="article:tag" content="5G">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option5.png">
     
     
     <!--- Icon Part-->
@@ -350,7 +368,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -412,13 +430,28 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-30 10:19:48</span>
-            <span class="mobile">2024-07-30 10:19:48</span>
+            <span class="desktop">2024-07-30 10:23:51</span>
+            <span class="mobile">2024-07-30 10:23:51</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%80%9A%E4%BF%A1/">通信</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/5G/">5G</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -440,7 +473,103 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            
+            <h2 id="5G基站gNB"><a href="#5G基站gNB" class="headerlink" title="5G基站gNB"></a>5G基站gNB</h2><p>gNB：<br>gNB就是5G基站的名称。next Generation NodeB</p>
+<p>en-gNB：<br>在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。</p>
+<p>ng-eNB：<br>在Option4系列的非独立（NSA）组网架构下，4G基站必须升级支持eLTE，和5G核心网对接，这种升级之后的4G基站就叫ng-eNB。这种架构由于是5G NR（N）和4G eNB（E）的双连接（DC），且5G NR为锚点，因此叫做NE-DC（NR eNB Dual Connection）。</p>
+<p>类似的，在Option7系列的非独立（NSA）组网架构下，和5G核心网对接，这种升级之后的4G基站也叫ng-eNB，但锚点在ng-eNB上，因此这种架构叫做NGEN-DC（NG-Enb NR Dual Connection）。</p>
+<p>NG-RAN：<br>顾名思义，NG-RAN的含义就是Next Generation Radio Access Network。在非独立组网架构中，这个概念不但包含5G基站（gNB），还包括升级支持eLTE的4G基站（ng-eNB）。也就是说，gNB和ng-eNB合起来，就叫做NG-RAN。</p>
+<h2 id="SA组网"><a href="#SA组网" class="headerlink" title="SA组网"></a>SA组网</h2><h3 id="Option5"><a href="#Option5" class="headerlink" title="Option5"></a>Option5</h3><p>无线接入网是LTE，核心网是5GC。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="Option5.png"
+                      alt="Option5"
+                ></p>
+<h3 id="Option2"><a href="#Option2" class="headerlink" title="Option2"></a>Option2</h3><p>和option1 相反，Option2的组合策略为：无线侧是NR，核心网是5GC，即无线和核心网侧全部更新换代，使用新的设备和新的技术来部署，这种组网策略，对于运营商而言需要全面的建设5G网络，无论是无线接入网还是核心网均需新建，网络投资大，建设周期长，但是一旦网络建设完毕，这就是一张独立的5G网络，可以支持3GPP定义的所有应用，且满足应用要求。侠义的5G网络指的就是option2，也是大部分运营商5G网络的最终走向。对应于option2，还有另一个称为NR SA –独立NR。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption2.png"
+                      alt="Option2"
+                ></p>
+<h2 id="NSA组网"><a href="#NSA组网" class="headerlink" title="NSA组网"></a>NSA组网</h2><h3 id="Option1"><a href="#Option1" class="headerlink" title="Option1"></a>Option1</h3><p>对应的组合策略为无线侧选择LTE，核心网侧选择EPC，即将目前4G网络进行软硬件升级用于支持5G应用，这样的网络就是5G网络。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./public/imgs/Option1.jpg"
+                      alt="Option1"
+                ></p>
+<h3 id="Option3"><a href="#Option3" class="headerlink" title="Option3"></a>Option3</h3><p>无线接入网为LTE+NR，核心网为EPC，在这种组网方案下，对于手机而言，接入侧，可以选择LTE或者NR，那么对于LTE和NR，由谁来控制手机，或者说手机和网络之间的信令传输和数据传输如何走呢？option3中，信令控制在LTE，数据可以走LTE或者NR。即对于手机而言，开机后，手机的控制是由LTE基站来实现的，而当手机想上传或者下载数据包的话，数据包既可以通过NR基站送给手机也可以通过LTE基站送给手机，至于如何传送，取决于配置。在option3这种模式下，对于终端而言，无线接入网有两种不同的连接方式，所以，这种模式又称为EN-DC，E代表EUTRAN,4G网络，N代表NR，E在前面代表控制由4G的EUTRAN来实现。在目前的5G网络建设过程中，Option3是运营商选择最多的一种方案，原因在于，可以最大程度的利用现有的4G网络，网络建设投资小，建设快。对于核心网而言，仅仅需要将EPC软件升级即可，对于无线网络而言，4G无线网络不变，在这个基础上新增5G NR基站。</p>
+<h4 id="Option3-1"><a href="#Option3-1" class="headerlink" title="Option3"></a>Option3</h4><p>在option3中，所有上行链路和下行链路数据流入和流出L都经过eNB。然后，eNB通过Xx接口决定它想要将哪部分数据转发到基站的5G gNB部分。简单来说，5G gNB不直接与4G核心网络通信！</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption3.png"
+                      alt="image-20240729155831716"
+                ></p>
+<h4 id="Option3a"><a href="#Option3a" class="headerlink" title="Option3a"></a>Option3a</h4><p>Option3a：所有的控制面信令都经由eNB转发，EPC将数据分流至gNB；</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption3a.png"
+                      alt="Option3a"
+                ></p>
+<h4 id="Option3x"><a href="#Option3x" class="headerlink" title="Option3x"></a>Option3x</h4><p>Option3x：所有的控制面信令都经由eNB转发，gNB可将数据分流至eNB。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5Coption3x.png"
+                      alt="image-20240729160324046"
+                ></p>
+<h3 id="Option4"><a href="#Option4" class="headerlink" title="Option4"></a>Option4</h3><p>和option3一样，无线接入网是LTE+NR，但是核心网是5GC，在这种组网模式下，对于UE而言，无线接入网也有两种接入模式，LTE和NR，所以也是双连接，信令控制是NR，核心网走5GC，所以这种组网模式又称为NE-DC，由NR提供信令控制，数据可以走NR，也可以由LTE承载。</p>
+<h4 id="Option4-1"><a href="#Option4-1" class="headerlink" title="Option4"></a>Option4</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption4.png"
+                      alt="Option4"
+                ></p>
+<h4 id="Option4a"><a href="#Option4a" class="headerlink" title="Option4a"></a>Option4a</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption4a.png"
+                      alt="image-20240729162945911"
+                ></p>
+<h3 id="Option6"><a href="#Option6" class="headerlink" title="Option6"></a>Option6</h3><p>NR+EPC的组合，这种组合实际应用价值更不高，所以，3GPP在制定标准的过程中，这种方案直接被运营商淘汰，3GPP规范发布的TS文档中，并未发布option6.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption6.png"
+                      alt="Option6"
+                ></p>
+<h3 id="Option7"><a href="#Option7" class="headerlink" title="Option7"></a>Option7</h3><p>无线接入网是LTE+NR，核心网是5GC，且终端控制由LTE实现，这种组网方案也是EN-DC。<br>5G核心网+eNB（主）+gNB<br>同时部署了5G 基站 和核心网 NGC，但Option7以4G 基站 eNB为主基站。所有的控制面信令都经由eNB转发, 4G 基站 eNB与 5G 基站 gNB采用双链接的形式为用户提供高数据速率服务。此场景包含3种模式：Option7、Option7a和Option7x。<br>Option7：所有的控制面信令都经由eNB转发，eNB将数据分流给gNB</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption7.png"
+                      alt="Option7"
+                ></p>
+<p>Option7a：所有的控制面信令都经由eNB转发，NGC将数据分流至gNB</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption7a.ong"
+                      alt="Option7a"
+                ></p>
+<p>Option7x：所有的控制面信令都经由eNB转发，gNB可将数据分流至eNB</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src=".%5Cpublic%5Cimgs%5COption7x.png"
+                      alt="Option7x"
+                ></p>
+<h3 id="Option8"><a href="#Option8" class="headerlink" title="Option8"></a>Option8</h3><p>无线接入网是LTE+NR，核心网是EPC，终端控制是NR。和option6一样，这个选择在规范制定的过程中，直接被淘汰，所以3GPP在TS文档中，并未发布。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="./public/imgs/Option2~7.png"
+                      alt="Option2~7"
+                ></p>
+
         </div>
 
         
@@ -454,7 +583,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-07-30 10:19:48
+                    :</strong> 2024-07-30 10:23:51
             </li>
         
         <li>
@@ -476,6 +605,18 @@
             </div>
         
 
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E9%80%9A%E4%BF%A1/">#通信</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/5G/">#5G</a>&nbsp;
+                    </li>
+                
+            </ul>
         
 
         
@@ -554,7 +695,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">5G组网部署</div>
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5G%E5%9F%BA%E7%AB%99gNB"><span class="nav-text">5G基站gNB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SA%E7%BB%84%E7%BD%91"><span class="nav-text">SA组网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Option5"><span class="nav-text">Option5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option2"><span class="nav-text">Option2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSA%E7%BB%84%E7%BD%91"><span class="nav-text">NSA组网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Option1"><span class="nav-text">Option1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option3"><span class="nav-text">Option3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option4"><span class="nav-text">Option4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option6"><span class="nav-text">Option6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option7"><span class="nav-text">Option7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option8"><span class="nav-text">Option8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
 
     </div>
 </div>
