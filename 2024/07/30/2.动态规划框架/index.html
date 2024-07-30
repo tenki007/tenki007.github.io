@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="tenki">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2024/07/30/2.动态规划框架/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="0.套路框架动态规划问题的一般形式就是求极值求解动态规划的核心问题是穷举  列出正确的“状态转移方程” 需要判断出是都具备“最优子结构” 因为存在“重叠子问题”所以需要使用“备忘录”和“DP table” 明确base case—&gt;明确”状态“—&gt;明确“选择”—&gt;定义dp数组&#x2F;函数的含义。  按照如上套路走，最后的解法代码就会是如下的框架  1234567891011121314">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/07/30/2.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="0.套路框架动态规划问题的一般形式就是求极值求解动态规划的核心问题是穷举  列出正确的“状态转移方程” 需要判断出是都具备“最优子结构” 因为存在“重叠子问题”所以需要使用“备忘录”和“DP table” 明确base case—&gt;明确”状态“—&gt;明确“选择”—&gt;定义dp数组&#x2F;函数的含义。  按照如上套路走，最后的解法代码就会是如下的框架  1234567891011121314">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700495862584-0118578d-af3f-41b5-8e21-ddb04b02f5d4.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700526048820-a5d74b38-8df0-4092-b082-39556e289624.jpeg">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700658697879-b9fa094e-7e65-4d36-aa55-199469df36a1.jpeg">
+<meta property="article:published_time" content="2024-07-30T01:39:55.702Z">
+<meta property="article:modified_time" content="2024-07-30T01:39:07.203Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700495862584-0118578d-af3f-41b5-8e21-ddb04b02f5d4.jpeg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/logo.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+        Hash_tenki&#39;s Blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        Hash_tenki&#39;s Blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"摸鱼中","subtitle":{"text":["loading"],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn/?c=b"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":"https://github.com/tenki007","instagram":null,"zhihu":null,"twitter":null,"email":"hash_tenki@foxmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Hash_tenki&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3"></h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="https://i.ibb.co/7trn99f/429c00a39e202e4190d4d12cb5cba8a.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">tenki</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-30 09:39:55</span>
+        <span class="mobile">2024-07-30 09:39:55</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-30 09:39:07</span>
+            <span class="mobile">2024-07-30 09:39:07</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="0-套路框架"><a href="#0-套路框架" class="headerlink" title="0.套路框架"></a>0.套路框架</h2><p>动态规划问题的一般形式就是求极值<br>求解动态规划的核心问题是穷举</p>
+<ol>
+<li>列出正确的“状态转移方程”</li>
+<li>需要判断出是都具备“最优子结构”</li>
+<li>因为存在“重叠子问题”所以需要使用“备忘录”和“DP table”</li>
+<li>明确base case—&gt;明确”状态“—&gt;明确“选择”—&gt;定义dp数组/函数的含义。</li>
+</ol>
+<p>按照如上套路走，最后的解法代码就会是如下的框架</p>
+<hr>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自顶向下递归的动态规划</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dp</span>(<span class="params">状态<span class="number">1</span>，状态<span class="number">2</span>,···</span>):</span><br><span class="line">    <span class="keyword">for</span> 选择<span class="keyword">in</span>所有的可能性:</span><br><span class="line">    	<span class="comment">#此时的状态已经因为做了选择而改变</span></span><br><span class="line">    	result = 求最值(result,dp(状态<span class="number">1</span>，状态<span class="number">2</span>，···))</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment">#自底向上迭代的动态规划</span></span><br><span class="line"><span class="comment">#初始化base case</span></span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>][...]=base <span class="keyword">case</span></span><br><span class="line"><span class="comment">#进行状态转移</span></span><br><span class="line"><span class="keyword">for</span> 状态<span class="number">1</span> <span class="keyword">in</span> 状态<span class="number">1</span>的所有取值:</span><br><span class="line">    <span class="keyword">for</span> 状态<span class="number">2</span> <span class="keyword">in</span> 状态<span class="number">2</span>的所有取值:</span><br><span class="line">        <span class="keyword">for</span> ...</span><br><span class="line">            dp[状态<span class="number">1</span>][状态<span class="number">2</span>][···]=求最值(选择<span class="number">1</span>，选择<span class="number">2</span>，···)</span><br></pre></td></tr></table></figure></div>
+<h2 id="1-斐波那契数列"><a href="#1-斐波那契数列" class="headerlink" title="1.斐波那契数列"></a>1.斐波那契数列</h2><ol>
+<li>暴力递归</li>
+</ol>
+<hr>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> N)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(N == <span class="number">1</span> || N == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">fib</span>(N <span class="number">-1</span>) + <span class="built_in">fib</span>(N <span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>代码简洁易懂但是十分抵消，画出递归树<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700495862584-0118578d-af3f-41b5-8e21-ddb04b02f5d4.jpeg"
+                     
+                ><br>易看出，时间复杂度为O(2^n),此时，动态规划问题的第一个性质：重叠子问题，接下来我们去解决这个问题</p>
+<ol start="2">
+<li>带“备忘录”的递归解法</li>
+</ol>
+<p>明确问题是由于重复计算导致的，接下来我们可以造一个备忘录，遇到一个子问题可以先去备忘录里查一查，避免重复计算<br>一般使用一个一维数组来充当这个备忘录，当然也可以用哈希表，思想都一样</p>
+<hr>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="comment">//备忘录初始化为0</span></span><br><span class="line">    <span class="type">int</span>[]memo = <span class="keyword">new</span> <span class="type">int</span>[N+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//进行备忘录递归</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">helper</span>(memo,N)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="built_in">helper</span>(<span class="type">int</span>[] memo,<span class="type">int</span> n)&#123;</span><br><span class="line">	<span class="comment">//base case</span></span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="comment">//已经计算过，不用再计算</span></span><br><span class="line">    <span class="keyword">if</span>(memo[n] != <span class="number">0</span>) <span class="keyword">return</span> memo[n];</span><br><span class="line">    memo[n] = <span class="built_in">helper</span>(memo,n<span class="number">-1</span>)+<span class="built_in">helper</span>(memo,n<span class="number">-2</span>);</span><br><span class="line">    <span class="keyword">return</span> memo[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>画出递归树<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700526048820-a5d74b38-8df0-4092-b082-39556e289624.jpeg"
+                     
+                ><br>由此，易得出，备忘录就是把一颗存在巨量冗余子问题的递归树进行了“剪枝”，改造成了一副不存在冗余的递归树，极大减少了子问题的个数</p>
+<ol start="3">
+<li>dp数组的迭代(递推)解法</li>
+</ol>
+<p>上述备忘录剪枝的过程中用到的备忘录是否可以独立出来成为一张表，在这张表上做由底而上的推算，我们通常把他叫做DP table</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(N == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>[] dp=<span class="keyword">new</span> <span class="type">int</span>[N+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//base case</span></span><br><span class="line">    dp[<span class="number">0</span>]=<span class="number">0</span>;dp[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="comment">//状态转移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        dp[i]=dp[i<span class="number">-1</span>]+dp[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在备忘录剪枝完成后备忘录和dptable是一样的，只是两者反过来算了，大部分情况下二者效率基本相当<br>“状态转移方程”，即是我们用来描述问题结构的数学形式：<br>$f(n) =<br>\begin{cases}<br>1,  &amp; \text{n=1,2} \<br>f(n-1)+f(n-1), &amp; \text{n&gt;2}\<br>\end{cases}$<br><del>为啥叫状态转移方程，因为看起来高端（bushi）</del><br>在上述解法中的所有操作中，例如<code>return f(n-1)+f(n-2)</code>,<code>dp[i]=dp[i-1]+dp[i-2]</code>包括对备忘录和dptable的操作，都是围绕这个方程式的不同变现形式，由此可见写出状态转移方程十分重要<br>在dptable的基础上，我们发现，当前状态只和前两个状态有关，只要想办法知道前两个状态就行了，于是我们可以滚动更新来降低空间复杂度：</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fib</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span>||n==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">//base case</span></span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//分别代表dp[n-1]和dp[n-2]</span></span><br><span class="line">    <span class="type">int</span> dp_i_1=<span class="number">1</span>,dp_i_2=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    <span class="type">int</span> dp_i=dp_i_1+dp_i_2;</span><br><span class="line">    dp_i_2=dp_i_1;</span><br><span class="line">    dp_i_1=dp_i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp_i_1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>这一般是动态规划问题的最后一步优化，即是我们发现状态转移方程只需要DP table的一部分，就可以尝试缩小DPtable的大小，以达到减小空间复杂度的目的<br>动态规划的另一个重要特性，最优子结构，我们会在后面提到</p>
+<h2 id="2-凑零钱问题"><a href="#2-凑零钱问题" class="headerlink" title="2.凑零钱问题"></a>2.凑零钱问题</h2><p><code>这是力扣322题“零钱兑换”</code>问题描述：给你k种面值的硬币，面值分别为<code>c1,c2,c2...ck</code>每种硬币的数量无限，再给出一个总金额amount，问最少需要几枚硬币才能凑出这个金额，如果不可能凑出，算法返回-1。算法的函数签名如下</p>
+<hr>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//coins中是可选硬币面值，amount是目标金额</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">coinChange</span><span class="params">(<span class="type">int</span>[] coin,<span class="type">int</span> amount)</span></span>;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>暴力递归</li>
+</ol>
+<p>首先，这个问题是个动态规划问题，因为它具有”最优子结构”。要符合最优子结构，子问题之间必须相互独立。在这个问题中，硬币的数量是无限的，不同面值的硬币之间不存在制约关系，所以是相互独立的。<br>确定是个动态规划问题之后，我们要思考的就是如何列出正确的状态转移方程。</p>
+<ul>
+<li>确定base case，这很简单，显然目标金额amount为0时算法返回0，因为不需要任何硬币就已经凑出目标金额了。</li>
+<li>确定“状态”，也就是原问题和子问题中会变化的变量。假象一下这个凑钱的过程，目标金额为<code>amount</code>，我们拿出一枚面值为<code>C1</code>的硬币，目标金额就变成了<code>amount-C1</code>，也就是说，在这个问题中唯一的状态就是目标金额<code>amount</code></li>
+<li>确定“选择”，也就是导致“状态”产生变化的行为。目标金额为什么变化，每次选择一枚硬币的时候，状态<code>amount</code>就会发生变化，于是乎，硬币的面值就是这个问题中的“选择”。</li>
+<li>明确<code>dp</code>函数/数组的定义。这里讲的是自顶向下的解法，所以会有一个递归的<code>dp</code>函数，一般来说函数的参数就是状态转移中会变化的量，也就是上面说到的状态；函数的返回值就是题目要求我们计算的量。就本题来讲，状态只有一个，即“目标金额”，题目要求我们计算凑出目标金额所需的最少硬币数量。</li>
+</ul>
+<p>所以我们可以这样定义dp函数，dp(n)表示，输入一个目标金额n，返回凑出目标金额n所需的最少硬币数量。搞明白这几个关键点之后，解法就逐渐清晰了：</p>
+<hr>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//伪码框架</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">coinChange</span><span class="params">(<span class="type">int</span>[] coins,<span class="type">int</span> amount)</span></span>&#123;</span><br><span class="line">    <span class="comment">//题目要求的最终结果是dp(amount)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dp</span>(coins,amount)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义：要凑出金额n，需要dp(coins,n)个硬币</span></span><br><span class="line"><span class="type">int</span> <span class="built_in">dp</span>(<span class="type">int</span>[] coins,<span class="type">int</span> n)&#123;</span><br><span class="line">    <span class="comment">//做选择，选择需要硬币最少的那个结果</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> coin:coins)&#123;</span><br><span class="line">        res=<span class="built_in">min</span>(res,<span class="number">1</span>+<span class="built_in">dp</span>(n-coin))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<p>根据如上伪代码，加上base case即可得出最终代码</p>
+<hr>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">coinChange</span><span class="params">(<span class="type">int</span>[] coins,<span class="type">int</span> amount)</span></span>&#123;</span><br><span class="line">	<span class="comment">//题目要求的最终结果是dp(amount)</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">dp</span>(amount)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义，要凑出金额为n,至少需要dp(amount)枚硬币</span></span><br><span class="line"><span class="type">int</span> <span class="built_in">dp</span>(<span class="type">int</span>[]coins,<span class="type">int</span> amount)&#123;</span><br><span class="line">    <span class="comment">//base case</span></span><br><span class="line">    <span class="keyword">if</span>(amount == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(amount &lt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> res = MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> coin:coins)&#123;</span><br><span class="line">        <span class="comment">//计算子问题的结果</span></span><br><span class="line">        <span class="type">int</span> subProblem = <span class="built_in">dp</span>(coins,amount - coin);</span><br><span class="line">        <span class="comment">//子问题无解则跳过</span></span><br><span class="line">        <span class="keyword">if</span>(subProblem == <span class="number">-1</span>) contine;</span><br><span class="line">        <span class="comment">//在子问题中选择最优解</span></span><br><span class="line">        res=<span class="built_in">min</span>(res,subProblem+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res==MAX_VALUE?<span class="number">-1</span>:res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>至此，状态转移方程其实已经完成了，以上算法就是暴力解，以上代码的数学形式就是状态转移方程：<br>$f(n)=<br>\begin{cases}<br>0,  &amp; \text{n=0} \<br>-1,  &amp; \text{n&lt;0} \<br>min{dp(n-coin)+1|coin∈coins}, &amp; \text{n&gt;0}\<br>\end{cases}$<br>至此这个问题就已经解决了，只不过需要消除重叠子问题，比如<code>amount=11，coins = &#123;1,2,5&#125;</code>时，画出递归树看看：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.nlark.com/yuque/0/2023/jpeg/40405123/1700658697879-b9fa094e-7e65-4d36-aa55-199469df36a1.jpeg"
+                     
+                ><br>*<em>递归算法的时间复杂度分析：子问题总数</em>解决每个子问题所需的时间**<br>假设目标金额为N，给定硬币数为k，那么递归树最坏情况下高度为N（全用面额为1的硬币），然后再假设这是一棵满k叉树，则节点的总数在O(kN)这个数量级<br>接下来看每个子问题的复杂度，由于每次递归包含一个for循环，复杂度为O(k)，则总时间复杂度为O(kN+1)，指数级别</p>
+<ol start="2">
+<li>带“备忘录”的递归解法</li>
+</ol>
+<p>类似于上一个斐波那契数列，只需要稍加修改，就可以通过备忘录消除子问题：</p>
+<hr>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] memo;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">coinChange</span><span class="params">(<span class="type">int</span>[] coins,<span class="type">int</span> amount)</span>&#123;</span><br><span class="line">    memo = <span class="keyword">new</span> <span class="title class_">int</span>[amount+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//&quot;备忘录&quot;初始化为一个不会被取到的特殊值，代表还未被计算</span></span><br><span class="line">    Arrays.fill(memo,-<span class="number">666</span>);</span><br><span class="line">    <span class="keyword">return</span> dp(coin,amount);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">dp</span><span class="params">(it[] coins,<span class="type">int</span> amount)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(amount==<span class="number">0</span>)&#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span>(amount&lt;<span class="number">0</span>)&#123;<span class="keyword">return</span> -<span class="number">1</span>&#125;</span><br><span class="line">    <span class="comment">//查“备忘录”，防止重复计算</span></span><br><span class="line">    <span class="keyword">if</span>(memo[amount]!=-<span class="number">666</span>)</span><br><span class="line">        <span class="keyword">return</span> memo[amount];</span><br><span class="line">    <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> coin:coins)&#123;</span><br><span class="line">        <span class="comment">//计算子问题的结果</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">subProblem</span> <span class="operator">=</span> dp(coins,amount-coin);</span><br><span class="line">        <span class="comment">//子问题无解则跳过</span></span><br><span class="line">        <span class="keyword">if</span>(subPromblem == -<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">//在子问题中选择最优解，然后加一</span></span><br><span class="line">        res = min(res,subProblem+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//把结果存到备忘录中</span></span><br><span class="line">    memo[amount]=(res==MAX_VALUE)?-<span class="number">1</span>:res;</span><br><span class="line">    <span class="keyword">return</span> memo[amount];	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在使用备忘录之后容易发现我们大大减少了子问题的数目，为O(N)，处理单个子问题的时间不变O(k)，所以总时间复杂度为O(N*k)</p>
+<ol start="3">
+<li>dp数组的迭代(递推)解法</li>
+</ol>
+<p>当然，也可以使用自底向上的dp table来消除重叠子问题，关于“状态”“选择”与base case都与之前没有区别；<br><code>dp</code>数组的定义，当目标金额为i时，至少需要dp[i]枚硬币凑出目标金额。</p>
+<hr>
+<hr>
+<h2 id="3-动态规划问题总结"><a href="#3-动态规划问题总结" class="headerlink" title="3.动态规划问题总结"></a>3.动态规划问题总结</h2>
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> </li>
+        <li><strong>Author:</strong> tenki</li>
+        <li><strong>Created at
+                :</strong> 2024-07-30 09:39:55</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2024-07-30 09:39:07
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2024/07/30/2.动态规划框架/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/18/1.%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">syntax 0f java/c plus plus</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title"></div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-%E5%A5%97%E8%B7%AF%E6%A1%86%E6%9E%B6"><span class="nav-text">0.套路框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="nav-text">1.斐波那契数列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%91%E9%9B%B6%E9%92%B1%E9%97%AE%E9%A2%98"><span class="nav-text">2.凑零钱问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-text">3.动态规划问题总结</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">tenki</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        3 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
