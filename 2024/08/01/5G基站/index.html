@@ -13,38 +13,28 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/07/30/5g组网部署-1/"/>
+    <link rel="canonical" href="http://example.com/2024/08/01/5g基站/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="5G基站gNBgNB：gNB就是5G基站的名称。next Generation NodeB en-gNB：在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。 ng-eNB：在Option4系列的非">
+        <meta name="description" content="1.5G基站硬件架构5G基站设备的整体架构可分为2类：  BBU+AAU&#x2F;RRU 2层架构 CU+DU+AAU&#x2F;RRU 3层架构  其中，CU、DU为基带设备，共同完成5G基带协议处理的全部功能。 CU负责高层基带协议处理，并提供与核心网之间的回传接口。 DU完成底层基带协议处理，并提供与5G AAU&#x2F;RRU之间的前传接口。CU与DU之间通过F1接口交互。 BBU集成了CU与DU的全部基带处理功能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="5G组网部署">
-<meta property="og:url" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/index.html">
+<meta property="og:url" content="http://example.com/2024/08/01/5G%E5%9F%BA%E7%AB%99/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="5G基站gNBgNB：gNB就是5G基站的名称。next Generation NodeB en-gNB：在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。 ng-eNB：在Option4系列的非">
+<meta property="og:description" content="1.5G基站硬件架构5G基站设备的整体架构可分为2类：  BBU+AAU&#x2F;RRU 2层架构 CU+DU+AAU&#x2F;RRU 3层架构  其中，CU、DU为基带设备，共同完成5G基带协议处理的全部功能。 CU负责高层基带协议处理，并提供与核心网之间的回传接口。 DU完成底层基带协议处理，并提供与5G AAU&#x2F;RRU之间的前传接口。CU与DU之间通过F1接口交互。 BBU集成了CU与DU的全部基带处理功能">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option5.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option2.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option1.jpg">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option3.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option3a.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/option3x.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option4.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option4a.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option6.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option7.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option7a.ong">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option7x.png">
-<meta property="og:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option2~7.png">
-<meta property="article:published_time" content="2024-07-30T02:19:48.114Z">
-<meta property="article:modified_time" content="2024-08-01T01:48:55.457Z">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4bd2e1e094ccffddf73ad8c1f57b1a44.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8b3ba31ba3d806062a10c1d7f484a69b.png">
+<meta property="article:published_time" content="2024-08-01T01:49:20.232Z">
+<meta property="article:modified_time" content="2024-08-01T01:49:36.064Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="通信">
 <meta property="article:tag" content="5G">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/Option5.png">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png">
     
     
     <!--- Icon Part-->
@@ -423,15 +413,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-07-30 10:19:48</span>
-        <span class="mobile">2024-07-30 10:19:48</span>
+        <span class="desktop">2024-08-01 09:49:20</span>
+        <span class="mobile">2024-08-01 09:49:20</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-01 09:48:55</span>
-            <span class="mobile">2024-08-01 09:48:55</span>
+            <span class="desktop">2024-08-01 09:49:36</span>
+            <span class="mobile">2024-08-01 09:49:36</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -489,102 +479,68 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h2 id="5G基站gNB"><a href="#5G基站gNB" class="headerlink" title="5G基站gNB"></a>5G基站gNB</h2><p>gNB：<br>gNB就是5G基站的名称。next Generation NodeB</p>
-<p>en-gNB：<br>在Option3系列的非独立（NSA）组网架构下，和4G核心网对接的5G基站，就叫en-gNB。这种架构由于是4G eNB（E）和5G NR（N）的双连接（DC），且4G eNB为锚点，因此叫做EN-DC（eNB NR Dual Connection）。</p>
-<p>ng-eNB：<br>在Option4系列的非独立（NSA）组网架构下，4G基站必须升级支持eLTE，和5G核心网对接，这种升级之后的4G基站就叫ng-eNB。这种架构由于是5G NR（N）和4G eNB（E）的双连接（DC），且5G NR为锚点，因此叫做NE-DC（NR eNB Dual Connection）。</p>
-<p>类似的，在Option7系列的非独立（NSA）组网架构下，和5G核心网对接，这种升级之后的4G基站也叫ng-eNB，但锚点在ng-eNB上，因此这种架构叫做NGEN-DC（NG-Enb NR Dual Connection）。</p>
-<p>NG-RAN：<br>顾名思义，NG-RAN的含义就是Next Generation Radio Access Network。在非独立组网架构中，这个概念不但包含5G基站（gNB），还包括升级支持eLTE的4G基站（ng-eNB）。也就是说，gNB和ng-eNB合起来，就叫做NG-RAN。</p>
-<h2 id="SA组网"><a href="#SA组网" class="headerlink" title="SA组网"></a>SA组网</h2><h3 id="Option5"><a href="#Option5" class="headerlink" title="Option5"></a>Option5</h3><p>无线接入网是LTE，核心网是5GC。</p>
+            <h2 id="1-5G基站硬件架构"><a href="#1-5G基站硬件架构" class="headerlink" title="1.5G基站硬件架构"></a><strong>1.5G基站硬件架构</strong></h2><p>5G基站设备的整体架构可分为2类：</p>
+<ul>
+<li>BBU+AAU/RRU 2层架构</li>
+<li>CU+DU+AAU/RRU 3层架构</li>
+</ul>
+<p>其中，CU、DU为基带设备，共同完成5G基带协议处理的全部功能。</p>
+<p>CU负责高层基带协议处理，并提供与核心网之间的回传接口。</p>
+<p>DU完成底层基带协议处理，并提供与5G AAU/RRU之间的前传接口。CU与DU之间通过F1接口交互。</p>
+<p>BBU集成了CU与DU的全部基带处理功能。</p>
+<p>目前，5G基站设备主要采用BBU+AAU/RRU 2层架构。</p>
+<p>DU设备架构与BBU类似，主要基于专用硬件平台实现。而CU设备，则一般基于通用硬件平台实现。</p>
+<h3 id="1-1-5G-BBU硬件架构"><a href="#1-1-5G-BBU硬件架构" class="headerlink" title="1.1 5G BBU硬件架构"></a><strong>1.1 5G BBU硬件架构</strong></h3><p>5G BBU是基带设备，硬件架构如图1所示，包含基带处理单元、主控传输单元、电源模块以及接口单元等功能模块。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="Option5.png"
-                      alt="Option5"
+                     data-src="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png"
+                      alt="f6bdb4872a2cde05edb1a8a31ffcc834.png"
                 ></p>
-<h3 id="Option2"><a href="#Option2" class="headerlink" title="Option2"></a>Option2</h3><p>和option1 相反，Option2的组合策略为：无线侧是NR，核心网是5GC，即无线和核心网侧全部更新换代，使用新的设备和新的技术来部署，这种组网策略，对于运营商而言需要全面的建设5G网络，无论是无线接入网还是核心网均需新建，网络投资大，建设周期长，但是一旦网络建设完毕，这就是一张独立的5G网络，可以支持3GPP定义的所有应用，且满足应用要求。侠义的5G网络指的就是option2，也是大部分运营商5G网络的最终走向。对应于option2，还有另一个称为NR SA –独立NR。</p>
+<p>图1 5G BBU硬件架构</p>
+<p>其中，基带处理单元主要完成基带协议处理，提供与AAU/RRU通信的接口。主控传输单元负责基站的配置管理、信令处理、资源管理、数据传输，提供传输、时钟、LMT接口。电源模块，主要用于设备内部直流供电的管理。</p>
+<p>硬件实现方面，5G BBU内部集成了多种半导体器件与芯片。主控传输单元与基带处理单元内部的核心器件如图2所示。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="Option2.png"
-                      alt="Option2"
+                     data-src="https://i-blog.csdnimg.cn/blog_migrate/4bd2e1e094ccffddf73ad8c1f57b1a44.png"
+                      alt="39b7d1b6d00e76e8304a6ca58718ba04.png"
                 ></p>
-<h2 id="NSA组网"><a href="#NSA组网" class="headerlink" title="NSA组网"></a>NSA组网</h2><h3 id="Option1"><a href="#Option1" class="headerlink" title="Option1"></a>Option1</h3><p>对应的组合策略为无线侧选择LTE，核心网侧选择EPC，即将目前4G网络进行软硬件升级用于支持5G应用，这样的网络就是5G网络。</p>
+<p>图2 BBU内部核心器件</p>
+<p>处理器（CPU），主要用于高层基带协议以及控制信令处理。基带芯片（ASIC），是BBU的关键芯片，负责底层基带协议处理以及软件算法的实现。FPGA芯片，用于基带协议处理中的硬件加速，实现加密/解密或接口转换等专用功能。光模块，负责完成光电信号转换功能，用于前传接口处理。交换芯片，用于与外部接口之间的数据交换。高精度晶振，用于支持BBU内部各功能模块之间的同步。</p>
+<h3 id="1-2-5G-AAU-RRU硬件架构"><a href="#1-2-5G-AAU-RRU硬件架构" class="headerlink" title="1.2 5G AAU/RRU硬件架构"></a><strong>1.2 5G AAU/RRU硬件架构</strong></h3><p>5G AAU/RRU，主要完成基带数字信号与射频模拟信号之间的转换，以及射频信号的收发处理功能。</p>
+<p>对于6GHz以下频段，AAU设备主要分为64T64R、32T32R、16T16R 等主流规格，分别支持64、32、16个射频收发通道。</p>
+<p>随着通道数的增加，CPRI接口的带宽需求大幅上升。为了降低前传接口的带宽需求，5G AAU采用eCPRI接口，将BBU的部分底层基带协议处理功能上移到AAU。</p>
+<p>对于2通道、4通道等低通道数的5G射频设备，仍采用传统的“RRU+天线”的设备形态。设备内部无内置的天线阵列。</p>
+<p>5G AAU与RRU的硬件架构基本相同，如图3所示。</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="Option1.jpg"
-                      alt="Option1"
+                     data-src="https://i-blog.csdnimg.cn/blog_migrate/8b3ba31ba3d806062a10c1d7f484a69b.png"
+                      alt="b0cec5954be91fba0fb6487efc0bfaf4.png"
                 ></p>
-<h3 id="Option3"><a href="#Option3" class="headerlink" title="Option3"></a>Option3</h3><p>无线接入网为LTE+NR，核心网为EPC，在这种组网方案下，对于手机而言，接入侧，可以选择LTE或者NR，那么对于LTE和NR，由谁来控制手机，或者说手机和网络之间的信令传输和数据传输如何走呢？option3中，信令控制在LTE，数据可以走LTE或者NR。即对于手机而言，开机后，手机的控制是由LTE基站来实现的，而当手机想上传或者下载数据包的话，数据包既可以通过NR基站送给手机也可以通过LTE基站送给手机，至于如何传送，取决于配置。在option3这种模式下，对于终端而言，无线接入网有两种不同的连接方式，所以，这种模式又称为EN-DC，E代表EUTRAN,4G网络，N代表NR，E在前面代表控制由4G的EUTRAN来实现。在目前的5G网络建设过程中，Option3是运营商选择最多的一种方案，原因在于，可以最大程度的利用现有的4G网络，网络建设投资小，建设快。对于核心网而言，仅仅需要将EPC软件升级即可，对于无线网络而言，4G无线网络不变，在这个基础上新增5G NR基站。</p>
-<h4 id="Option3-1"><a href="#Option3-1" class="headerlink" title="Option3"></a>Option3</h4><p>在option3中，所有上行链路和下行链路数据流入和流出L都经过eNB。然后，eNB通过Xx接口决定它想要将哪部分数据转发到基站的5G gNB部分。简单来说，5G gNB不直接与4G核心网络通信！</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option3.png"
-                      alt="image-20240729155831716"
-                ></p>
-<h4 id="Option3a"><a href="#Option3a" class="headerlink" title="Option3a"></a>Option3a</h4><p>Option3a：所有的控制面信令都经由eNB转发，EPC将数据分流至gNB；</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option3a.png"
-                      alt="Option3a"
-                ></p>
-<h4 id="Option3x"><a href="#Option3x" class="headerlink" title="Option3x"></a>Option3x</h4><p>Option3x：所有的控制面信令都经由eNB转发，gNB可将数据分流至eNB。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="option3x.png"
-                      alt="image-20240729160324046"
-                ></p>
-<h3 id="Option4"><a href="#Option4" class="headerlink" title="Option4"></a>Option4</h3><p>和option3一样，无线接入网是LTE+NR，但是核心网是5GC，在这种组网模式下，对于UE而言，无线接入网也有两种接入模式，LTE和NR，所以也是双连接，信令控制是NR，核心网走5GC，所以这种组网模式又称为NE-DC，由NR提供信令控制，数据可以走NR，也可以由LTE承载。</p>
-<h4 id="Option4-1"><a href="#Option4-1" class="headerlink" title="Option4"></a>Option4</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option4.png"
-                      alt="Option4"
-                ></p>
-<h4 id="Option4a"><a href="#Option4a" class="headerlink" title="Option4a"></a>Option4a</h4><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option4a.png"
-                      alt="image-20240729162945911"
-                ></p>
-<h3 id="Option6"><a href="#Option6" class="headerlink" title="Option6"></a>Option6</h3><p>NR+EPC的组合，这种组合实际应用价值更不高，所以，3GPP在制定标准的过程中，这种方案直接被运营商淘汰，3GPP规范发布的TS文档中，并未发布option6.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option6.png"
-                      alt="Option6"
-                ></p>
-<h3 id="Option7"><a href="#Option7" class="headerlink" title="Option7"></a>Option7</h3><p>无线接入网是LTE+NR，核心网是5GC，且终端控制由LTE实现，这种组网方案也是EN-DC。<br>5G核心网+eNB（主）+gNB<br>同时部署了5G 基站 和核心网 NGC，但Option7以4G 基站 eNB为主基站。所有的控制面信令都经由eNB转发, 4G 基站 eNB与 5G 基站 gNB采用双链接的形式为用户提供高数据速率服务。此场景包含3种模式：Option7、Option7a和Option7x。<br>Option7：所有的控制面信令都经由eNB转发，eNB将数据分流给gNB</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option7.png"
-                      alt="Option7"
-                ></p>
-<p>Option7a：所有的控制面信令都经由eNB转发，NGC将数据分流至gNB</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option7a.ong"
-                      alt="Option7a"
-                ></p>
-<p>Option7x：所有的控制面信令都经由eNB转发，gNB可将数据分流至eNB</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option7x.png"
-                      alt="Option7x"
-                ></p>
-<h3 id="Option8"><a href="#Option8" class="headerlink" title="Option8"></a>Option8</h3><p>无线接入网是LTE+NR，核心网是EPC，终端控制是NR。和option6一样，这个选择在规范制定的过程中，直接被淘汰，所以3GPP在TS文档中，并未发布。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="Option2~7.png"
-                      alt="Option2~7"
-                ></p>
+<p>图3 5G AAU/RRU硬件架构</p>
+<p>设备内部包含了接口、数字基带、数字中频、收发信机、功放、双工器等主要模块与器件。</p>
+<p>其中，接口模块主要用于前传接口信号处理。数字基带模块负责底层基带信号处理。数字中频模块实现上下变频、预失真和波峰系数降低等功能。收发信机模块，完成数模/模数转换（ADC/DAC）以及模拟信号的接收与发射信号处理功能。功放/低噪放分别，完成下行与上行信号的放大。滤波器，用于发射及接收信号的选频，以及干扰抑制。双工器，用于接收与发送通道的信号滤波与收发切换。</p>
+<h2 id="2-常用BBU设备"><a href="#2-常用BBU设备" class="headerlink" title="2.常用BBU设备"></a><strong>2.常用BBU设备</strong></h2><h3 id="2-1常用BBU设备型号"><a href="#2-1常用BBU设备型号" class="headerlink" title="2.1常用BBU设备型号"></a><strong>2.1常用BBU设备型号</strong></h3><p>​        市面上常用的5G BBU（Baseband Unit，基带处理单元）主要由几大通信设备供应商提供，这些供应商包括但不限于华为、中兴、爱立信、诺基亚等。以下是几个常见的5G BBU产品：</p>
+<h4 id="2-1-1华为BBU5900："><a href="#2-1-1华为BBU5900：" class="headerlink" title="2.1.1华为BBU5900："></a><strong>2.1.1华为BBU5900：</strong></h4><p>华为的BBU5900是一款支持多模（2G/3G/4G/5G）的基带处理单元，能够提供高密度的基带处理能力，支持大规模MIMO和多载波聚合。<br>它具有多个槽位用于安装不同的基带处理板，如5G基带板，支持25G/10G光口连接AAU或RHUB。</p>
+<h4 id="2-1-2中兴通讯的ITBBU："><a href="#2-1-2中兴通讯的ITBBU：" class="headerlink" title="2.1.2中兴通讯的ITBBU："></a><strong>2.1.2中兴通讯的ITBBU：</strong></h4><p>中兴通讯与Intel合作推出的ITBBU是基于软件定义架构和网络功能虚拟化（SDN/NFV）的5G无线接入产品，可以实现更灵活的资源分配和管理。</p>
+<h4 id="2-1-3爱立信的Baseband-6648："><a href="#2-1-3爱立信的Baseband-6648：" class="headerlink" title="2.1.3爱立信的Baseband 6648："></a><strong>2.1.3爱立信的Baseband 6648：</strong></h4><p>爱立信的Baseband 6648是为5G设计的基带处理器，支持大规模MIMO和多频段操作，能够处理大量的数据流量，适用于密集的城市环境。</p>
+<h4 id="2-1-4诺基亚AirScale-Baseband："><a href="#2-1-4诺基亚AirScale-Baseband：" class="headerlink" title="2.1.4诺基亚AirScale Baseband："></a><strong>2.1.4诺基亚AirScale Baseband：</strong></h4><p>诺基亚的AirScale Baseband是一种模块化的解决方案，可以根据网络需求进行扩展，支持从4G到5G的平滑演进。<br>这些BBU设备通常具备高度集成性和灵活性，能够适应不同的网络部署场景，包括宏站、微站、室内覆盖等。它们还支持多种接口标准，如CPRI（Common Public Radio Interface）、eCPRI（enhanced Common Public Radio Interface）等，以实现与射频单元（如AAU或RU）的连接。</p>
+<h3 id="2-2BBU设备对比"><a href="#2-2BBU设备对比" class="headerlink" title="2.2BBU设备对比"></a><strong>2.2BBU设备对比</strong></h3><p>各大厂商的5G BBU（基带处理单元）在设计上各有特色，主要区别体现在处理能力、能耗、灵活性、成本以及对新技术的支持等方面。以下是一些主要的对比点：</p>
+<h4 id="2-2-1处理能力："><a href="#2-2-1处理能力：" class="headerlink" title="2.2.1处理能力："></a><strong>2.2.1处理能力：</strong></h4><p>华为BBU5900：以其强大的处理能力和高密度设计著称，能支持大规模MIMO和多载波聚合，适合高容量需求的场景。<br>中兴ITBBU：强调软件定义和NFV（网络功能虚拟化），能够根据网络需求动态调整资源，适合复杂多变的网络环境。<br>爱立信Baseband 6648：以其高效的数据处理和低延迟特性受到好评，特别适合对延迟敏感的应用场景。<br>诺基亚AirScale Baseband：模块化设计使其易于扩展和升级，能够灵活应对不同规模的网络需求。</p>
+<h4 id="2-2-2能耗："><a href="#2-2-2能耗：" class="headerlink" title="2.2.2能耗："></a><strong>2.2.2能耗：</strong></h4><p>华为BBU5900和诺基亚AirScale Baseband都采用了节能技术，但具体能耗表现会因实际配置和工作负载而异。<br>中兴ITBBU和爱立信Baseband 6648也注重能效比，通过优化硬件和软件算法来降低功耗。<br>灵活性与可扩展性：<br>中兴ITBBU和诺基亚AirScale Baseband因其模块化和虚拟化的设计，在灵活性方面表现突出，易于根据业务需求进行调整。<br>华为BBU5900和爱立信Baseband 6648虽然在固定硬件配置下性能卓越，但在软件定义和虚拟化方面可能不如前两者灵活。</p>
+<h4 id="2-2-3成本："><a href="#2-2-3成本：" class="headerlink" title="2.2.3成本："></a><strong>2.2.3成本：</strong></h4><p>成本不仅包括设备本身的价格，还包括运维、能耗、升级等方面的长期成本。一般而言，采用NFV和SDN技术的设备（如中兴ITBBU）可能在初期投资较高，但长期来看可能因更高的效率和灵活性而节省成本。<br>新技术支持：<br>所有厂商都在持续更新其产品线，以支持最新的5G技术和标准，如毫米波、Sub-6GHz、SA/NSA双模等。但具体支持程度和时间点可能会有所不同。<br>选择哪款BBU取决于运营商的具体需求，包括网络规模、业务类型、预算以及对未来技术发展的预期。每种设备都有其优势和局限性，没有绝对的好坏之分，关键在于匹配度。</p>
+<h2 id="3-常见的RRU-AAU设备"><a href="#3-常见的RRU-AAU设备" class="headerlink" title="3.常见的RRU/AAU设备"></a><strong>3.常见的RRU/AAU设备</strong></h2><p>市面上常见的RRU（Remote Radio Unit，远程射频单元）和AAU（Active Antenna Unit，有源天线单元）主要由几家大型通信设备制造商提供，包括华为、中兴、爱立信、诺基亚等。下面是一些常见型号及其特点：</p>
+<h4 id="3-1RRU-Remote-Radio-Unit"><a href="#3-1RRU-Remote-Radio-Unit" class="headerlink" title="3.1RRU (Remote Radio Unit)"></a><strong>3.1RRU (Remote Radio Unit)</strong></h4><h5 id="3-1-1华为RRU3971："><a href="#3-1-1华为RRU3971：" class="headerlink" title="3.1.1华为RRU3971："></a><strong>3.1.1华为RRU3971：</strong></h5><p>支持4G LTE频段，具有较高的集成度和紧凑设计，适用于室外安装。<br>可以支持多频段和多模式，便于网络升级和维护。</p>
+<h5 id="3-1-2中兴ZXRAN-RRU："><a href="#3-1-2中兴ZXRAN-RRU：" class="headerlink" title="3.1.2中兴ZXRAN RRU："></a><strong>3.1.2中兴ZXRAN RRU：</strong></h5><p>提供多种型号，支持不同的频段和制式，如ZXRAN RRU3910，适用于4G LTE网络。<br>具备良好的环境适应性和抗干扰能力。</p>
+<h5 id="3-1-3爱立信RRUS01："><a href="#3-1-3爱立信RRUS01：" class="headerlink" title="3.1.3爱立信RRUS01："></a><strong>3.1.3爱立信RRUS01：</strong></h5><p>针对4G LTE设计，支持多个频段，具有低功耗和高效率的特点。<br>设计紧凑，便于安装和维护。</p>
+<h5 id="3-1-4诺基亚Flexi-RRH："><a href="#3-1-4诺基亚Flexi-RRH：" class="headerlink" title="3.1.4诺基亚Flexi RRH："></a><strong>3.1.4诺基亚Flexi RRH：</strong></h5><p>提供一系列的RRH（Remote Radio Head）产品，支持多模多频段，如Flexi RRH 2000系列。<br>强调灵活部署和高可靠性。</p>
+<h4 id="3-2AAU-Active-Antenna-Unit"><a href="#3-2AAU-Active-Antenna-Unit" class="headerlink" title="3.2AAU (Active Antenna Unit)"></a><strong>3.2AAU (Active Antenna Unit)</strong></h4><h5 id="3-2-1华为AAU5613："><a href="#3-2-1华为AAU5613：" class="headerlink" title="3.2.1华为AAU5613："></a><strong>3.2.1华为AAU5613：</strong></h5><p>针对5G NR设计，支持64T64R（64个收发通道）的大规模MIMO。<br>集成了天线和射频单元，减少了馈线损耗，提高了频谱效率。</p>
+<h5 id="3-2-2中兴通讯Massive-MIMO-AAU："><a href="#3-2-2中兴通讯Massive-MIMO-AAU：" class="headerlink" title="3.2.2中兴通讯Massive MIMO AAU："></a><strong>3.2.2中兴通讯Massive MIMO AAU：</strong></h5><p>提供多种AAU型号，如ZXRAN AAU9611，支持64T64R，适用于5G NR。<br>结合了天线和射频功能，简化了站点部署。</p>
+<h5 id="3-2-3爱立信Radio-6488："><a href="#3-2-3爱立信Radio-6488：" class="headerlink" title="3.2.3爱立信Radio 6488："></a><strong>3.2.3爱立信Radio 6488：</strong></h5><p>针对5G设计，支持64T64R，具有高性能的射频处理能力。<br>采用模块化设计，便于维护和升级。</p>
+<h5 id="3-2-4诺基亚AirScale-AAU："><a href="#3-2-4诺基亚AirScale-AAU：" class="headerlink" title="3.2.4诺基亚AirScale AAU："></a><strong>3.2.4诺基亚AirScale AAU：</strong></h5><p>包括多个系列，如AirScale SMall Cell和AirScale QCell，支持5G NR。<br>强调灵活的网络架构和高性能的射频处理。</p>
+<h4 id="3-3特点与区别"><a href="#3-3特点与区别" class="headerlink" title="3.3特点与区别"></a><strong>3.3特点与区别</strong></h4><p>AAU相比传统的RRU，最大的特点是集成了天线和射频单元，减少了馈线损耗，提高了系统的整体性能和频谱效率。AAU通常用于5G网络，支持大规模MIMO技术，以实现更高的数据速率和更好的覆盖质量。<br>RRU主要用于4G LTE网络，尽管有些RRU也能支持5G NR，但它们通常不集成天线，而是通过馈线与外部天线相连。<br>选择合适的RRU或AAU主要取决于网络需求、频段、覆盖范围、数据吞吐量以及成本考虑等因素。</p>
 
         </div>
 
@@ -595,15 +551,15 @@
         <li><strong>Title:</strong> 5G组网部署</li>
         <li><strong>Author:</strong> tenki</li>
         <li><strong>Created at
-                :</strong> 2024-07-30 10:19:48</li>
+                :</strong> 2024-08-01 09:49:20</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-08-01 09:48:55
+                    :</strong> 2024-08-01 09:49:36
             </li>
         
         <li>
-            <strong>Link:</strong> https://blog.hashtenki.online/2024/07/30/5G组网部署-1/
+            <strong>Link:</strong> https://blog.hashtenki.online/2024/08/01/5G基站/
         </li>
         <li>
             <strong>
@@ -640,29 +596,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/08/01/5G%E5%9F%BA%E7%AB%99/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">5G组网部署</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/07/30/2.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A1%86%E6%9E%B6/"
+                        href="/2024/07/30/5G%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2-1/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">动态规划框架</span>
+                                <span class="post-nav-title-item">5G组网部署</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -726,7 +667,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">5G组网部署</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5G%E5%9F%BA%E7%AB%99gNB"><span class="nav-text">5G基站gNB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SA%E7%BB%84%E7%BD%91"><span class="nav-text">SA组网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Option5"><span class="nav-text">Option5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option2"><span class="nav-text">Option2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSA%E7%BB%84%E7%BD%91"><span class="nav-text">NSA组网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Option1"><span class="nav-text">Option1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option3"><span class="nav-text">Option3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option4"><span class="nav-text">Option4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option6"><span class="nav-text">Option6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option7"><span class="nav-text">Option7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Option8"><span class="nav-text">Option8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5G%E5%9F%BA%E7%AB%99%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-text">1.5G基站硬件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5G-BBU%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-text">1.1 5G BBU硬件架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-5G-AAU-RRU%E7%A1%AC%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-text">1.2 5G AAU&#x2F;RRU硬件架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B8%B8%E7%94%A8BBU%E8%AE%BE%E5%A4%87"><span class="nav-text">2.常用BBU设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E5%B8%B8%E7%94%A8BBU%E8%AE%BE%E5%A4%87%E5%9E%8B%E5%8F%B7"><span class="nav-text">2.1常用BBU设备型号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2BBU%E8%AE%BE%E5%A4%87%E5%AF%B9%E6%AF%94"><span class="nav-text">2.2BBU设备对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B8%B8%E8%A7%81%E7%9A%84RRU-AAU%E8%AE%BE%E5%A4%87"><span class="nav-text">3.常见的RRU&#x2F;AAU设备</span></a></li></ol>
 
     </div>
 </div>
