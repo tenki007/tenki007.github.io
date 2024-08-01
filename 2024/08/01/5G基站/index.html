@@ -25,16 +25,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1.5G基站硬件架构5G基站设备的整体架构可分为2类：  BBU+AAU&#x2F;RRU 2层架构 CU+DU+AAU&#x2F;RRU 3层架构  其中，CU、DU为基带设备，共同完成5G基带协议处理的全部功能。 CU负责高层基带协议处理，并提供与核心网之间的回传接口。 DU完成底层基带协议处理，并提供与5G AAU&#x2F;RRU之间的前传接口。CU与DU之间通过F1接口交互。 BBU集成了CU与DU的全部基带处理功能">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4bd2e1e094ccffddf73ad8c1f57b1a44.png">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8b3ba31ba3d806062a10c1d7f484a69b.png">
+<meta property="og:image" content="http://example.com/2024/08/01/5G%E5%9F%BA%E7%AB%99/image1.png">
+<meta property="og:image" content="http://example.com/2024/08/01/5G%E5%9F%BA%E7%AB%99/image2.png">
+<meta property="og:image" content="http://example.com/2024/08/01/5G%E5%9F%BA%E7%AB%99/image3.png">
 <meta property="article:published_time" content="2024-08-01T01:49:20.232Z">
-<meta property="article:modified_time" content="2024-08-01T01:51:22.254Z">
+<meta property="article:modified_time" content="2024-08-01T02:05:01.284Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="通信">
 <meta property="article:tag" content="5G">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png">
+<meta name="twitter:image" content="http://example.com/2024/08/01/5G%E5%9F%BA%E7%AB%99/image1.png">
     
     
     <!--- Icon Part-->
@@ -420,8 +420,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-08-01 09:51:22</span>
-            <span class="mobile">2024-08-01 09:51:22</span>
+            <span class="desktop">2024-08-01 10:05:01</span>
+            <span class="mobile">2024-08-01 10:05:01</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -494,8 +494,8 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://i-blog.csdnimg.cn/blog_migrate/631f7c8325a5d7e94eaf20f1326bc4b3.png"
-                      alt="f6bdb4872a2cde05edb1a8a31ffcc834.png"
+                     data-src="image1.png"
+                      alt="5G BBU硬件架构"
                 ></p>
 <p>图1 5G BBU硬件架构</p>
 <p>其中，基带处理单元主要完成基带协议处理，提供与AAU/RRU通信的接口。主控传输单元负责基站的配置管理、信令处理、资源管理、数据传输，提供传输、时钟、LMT接口。电源模块，主要用于设备内部直流供电的管理。</p>
@@ -503,8 +503,8 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://i-blog.csdnimg.cn/blog_migrate/4bd2e1e094ccffddf73ad8c1f57b1a44.png"
-                      alt="39b7d1b6d00e76e8304a6ca58718ba04.png"
+                     data-src="image2.png"
+                      alt="BBU内部核心器件"
                 ></p>
 <p>图2 BBU内部核心器件</p>
 <p>处理器（CPU），主要用于高层基带协议以及控制信令处理。基带芯片（ASIC），是BBU的关键芯片，负责底层基带协议处理以及软件算法的实现。FPGA芯片，用于基带协议处理中的硬件加速，实现加密/解密或接口转换等专用功能。光模块，负责完成光电信号转换功能，用于前传接口处理。交换芯片，用于与外部接口之间的数据交换。高精度晶振，用于支持BBU内部各功能模块之间的同步。</p>
@@ -513,12 +513,7 @@
 <p>随着通道数的增加，CPRI接口的带宽需求大幅上升。为了降低前传接口的带宽需求，5G AAU采用eCPRI接口，将BBU的部分底层基带协议处理功能上移到AAU。</p>
 <p>对于2通道、4通道等低通道数的5G射频设备，仍采用传统的“RRU+天线”的设备形态。设备内部无内置的天线阵列。</p>
 <p>5G AAU与RRU的硬件架构基本相同，如图3所示。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://i-blog.csdnimg.cn/blog_migrate/8b3ba31ba3d806062a10c1d7f484a69b.png"
-                      alt="b0cec5954be91fba0fb6487efc0bfaf4.png"
-                ></p>
+<p><img src="image3.png" alt="5G AAU/RRU硬件架构"></p>
 <p>图3 5G AAU/RRU硬件架构</p>
 <p>设备内部包含了接口、数字基带、数字中频、收发信机、功放、双工器等主要模块与器件。</p>
 <p>其中，接口模块主要用于前传接口信号处理。数字基带模块负责底层基带信号处理。数字中频模块实现上下变频、预失真和波峰系数降低等功能。收发信机模块，完成数模/模数转换（ADC/DAC）以及模拟信号的接收与发射信号处理功能。功放/低噪放分别，完成下行与上行信号的放大。滤波器，用于发射及接收信号的选频，以及干扰抑制。双工器，用于接收与发送通道的信号滤波与收发切换。</p>
@@ -555,7 +550,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-08-01 09:51:22
+                    :</strong> 2024-08-01 10:05:01
             </li>
         
         <li>
